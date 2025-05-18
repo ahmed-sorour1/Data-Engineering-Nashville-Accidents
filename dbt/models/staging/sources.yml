@@ -1,0 +1,9 @@
+version : 2
+
+sources:
+  - name: raw_nashville_accident
+    database: accident_DB  
+    schema: raw  
+    tables:
+      - name: nashville_accident
+  

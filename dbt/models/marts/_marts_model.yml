@@ -1,0 +1,37 @@
+version: 2
+
+models:
+
+  - name: fact_nashville_accident
+    description: "The fact table"
+    columns:
+      - name: accident_sk
+        description: "Surrogate key for the accident"
+        tests:
+          - unique
+          - not_null
+      - name: accident_id
+        description: "Unique identifier for the accident"
+        tests:
+          - unique
+          - not_null
+      - name: date_key
+        description: "The unique date identifier (YYYYMMDD)"
+        tests:
+          - not_null
+      - name: location_sk
+        description: "Surrogate key for location"
+        tests:
+          - not_null
+      - name: weather_sk
+        description: "Surrogate key for weather"
+        tests:
+          - not_null
+      - name: collision_sk
+        description: "Surrogate key for collision type"
+        tests:
+          - not_null
+      - name: harmful_sk
+        description: "Surrogate key for harmful descriptions"
+        tests:
+          - not_null

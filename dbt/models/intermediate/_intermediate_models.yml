@@ -1,0 +1,99 @@
+version: 2
+
+models:
+
+  - name: int_SK_full_table
+    description: "The staging table with raw accident data and surrogate keys"
+    columns:
+      - name: accident_sk
+        description: "Surrogate key for the accident"
+        tests:
+          - unique
+          - not_null
+      - name: accident_id
+        description: "Unique identifier for the accident"
+        tests:
+          - unique
+
+  - name: int_dim_date
+    description: "Date dimension table"
+    columns:
+      - name: date_key
+        description: "The unique date identifier (YYYYMMDD)"
+        tests:
+          - unique
+          - not_null
+      - name: date_time
+        description: "Full timestamp for the date"
+        tests:
+          - not_null
+
+  - name: int_dim_location
+    description: "Location dimension table"
+    columns:
+      - name: location_sk
+        description: "Surrogate key for location"
+        tests:
+          - unique
+          - not_null
+      - name: street_address
+        description: "The street address of the accident"
+        tests:
+          - not_null
+      - name: city
+        description: "The city of the accident"
+        tests:
+          - not_null
+      - name: state
+        description: "The state of the accident"
+        tests:
+          - not_null
+
+  - name: int_dim_weather
+    description: "Weather dimension table"
+    columns:
+      - name: weather_sk
+        description: "Surrogate key for weather"
+        tests:
+          - unique
+          - not_null
+      - name: weather_description
+        description: "Description of the weather conditions"
+        tests:
+          - not_null
+      - name: illumination_description
+        description: "Description of the illumination conditions"
+        tests:
+          - not_null
+
+
+  - name: int_dim_collision
+    description: "Collision type dimension table"
+    columns:
+      - name: collision_sk
+        description: "Surrogate key for collision type"
+        tests:
+          - unique
+          - not_null
+      - name: collision_type_description
+        description: "Description of the collision type"
+        tests:
+          - not_null
+
+  - name: int_dim_harm
+    description: "Harmful codes and descriptions dimension table"
+    columns:
+      - name: harmful_sk
+        description: "Surrogate key for harmful descriptions"
+        tests:
+          - unique
+          - not_null
+      - name: harmful_descriptions
+        description: "Description of the harmful event"
+        tests:
+          - not_null
+      - name: harmful_codes
+        description: "Code representing the harmful event"
+        tests:
+          - not_null
+          - unique
